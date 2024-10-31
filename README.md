@@ -1,9 +1,14 @@
 # Payment-API
 
-First, on "nextjs-checkout" run the development server:
+First, on "/nextjs-checkout" run the development server:
 ```bash
 npm install
 npm run dev
+```
+On "/server" create a .env file:
+```bash
+ACCESS_TOKEN=your_mercado_pago_token
+STRIPE_TOKEN=your_stripe_token
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
