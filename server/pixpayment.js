@@ -25,15 +25,10 @@ app.post('/pix-payment', async (req, res) => {
         number: req.body.number
     }}}
 
-    try {
-        const paymentResponse = await payment.create({ body });
+    const paymentResponse = await payment.create({ body });
         const ticketUrl = paymentResponse.point_of_interaction.transaction_data.ticket_url;
-        res.redirect(ticketUrl)
-    } catch (error) {
-        console.error('Error during Pix payment:', error);
-        res.status(500).send('Error during Pix payment');
-    }
-        
+        console.log(ticketUrl);
+        res.json({ ticket_url: ticketUrl });
 })
 
 

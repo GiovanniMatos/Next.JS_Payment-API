@@ -11,8 +11,7 @@ export default function CheckoutPix(){
 
   async function payWithPix(event){
     event.preventDefault(); 
-    try {
-        const response = await fetch("http://localhost:4000/pix-payment", {
+    const response = await fetch("http://localhost:4000/pix-payment", {
             method: "POST",
             headers: {
                 mode: "no-cors",
@@ -25,10 +24,8 @@ export default function CheckoutPix(){
                 cpf: cpf
             })
           })
-
-    } catch (error) {
-        console.error("Error during payment:", error);
-    }
+          const data = await response.json();
+          window.location.href = data.ticket_url;
 }
   return(
       <>

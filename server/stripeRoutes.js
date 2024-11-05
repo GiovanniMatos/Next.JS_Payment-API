@@ -64,8 +64,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:4000/success',
-      cancel_url: 'http://localhost:4000/cancel',
+      success_url: `${req.headers.origin}/?success=true`,
+      cancel_url: `${req.headers.origin}/?canceled=true`,
     });
   
     res.redirect(303, session.url);
