@@ -11,7 +11,7 @@ export default function CheckoutPix(){
 
   async function payWithPix(event){
     event.preventDefault(); 
-    const response = await fetch("http://localhost:4000/pix-payment", {
+    const response = await fetch("https://next-js-payment-api.onrender.com/pix-payment", {
             method: "POST",
             headers: {
                 mode: "no-cors",
