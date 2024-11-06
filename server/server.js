@@ -41,11 +41,20 @@ app.post('/pix-payment', async (req, res) => {
 
 // STRIPE Checkout Section Creation based on documentation
 app.post('/create-checkout-session', async (req, res) => {
+    const response = await fetch("http://ip-api.com/json/?fields=currency", { // Request IP API to get currency information
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json",
+          }
+      });
+      const data = await response.json();
+      console.log(data.currency); 
+      
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: data.currency, // filters currency belonging to IP locale
             product_data: {
               name: 'Product Name here',
             },
