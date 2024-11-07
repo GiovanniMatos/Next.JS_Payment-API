@@ -22,7 +22,7 @@ export default function FormPayer(){
         event.preventDefault();
         
         try {
-            await fetch("https://next-js-payment-api.onrender.com/create-costumer", {
+            await fetch("http://localhost:4000/create-costumer", {
                 method: 'POST',
                 headers: {
                     mode: "no-cors",
