@@ -10,6 +10,16 @@ On "/server" create a .env file:
 ACCESS_TOKEN=your_mercado_pago_token
 STRIPE_TOKEN=your_stripe_token
 ```
+If you chose Python Server, run:
+```bash
+pip install -r requirements.txt
+python3 server.py
+```
+If you chose Node.JS Server, run:
+```bash
+npm install
+node server.js
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ![image](https://github.com/user-attachments/assets/8bbcfbb0-ffe6-41a2-868d-15ce42552fc7)
