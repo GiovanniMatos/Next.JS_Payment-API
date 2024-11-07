@@ -20,8 +20,10 @@ If you chose Node.JS Server, run:
 npm install
 node server.js
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you have the server hosted, change localhost to server address in some Front-end components:
+![image](https://github.com/user-attachments/assets/e63910ba-9e3a-46fc-ad52-41d729ae281f)
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 ![image](https://github.com/user-attachments/assets/8bbcfbb0-ffe6-41a2-868d-15ce42552fc7)
 ![image](https://github.com/user-attachments/assets/c25e085f-c89f-4460-8813-343086c708a3)
 ![image](https://github.com/user-attachments/assets/fee876e3-9df1-46b2-af26-2fdd58ab4ed1)
