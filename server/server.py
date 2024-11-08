@@ -1,14 +1,52 @@
-import stripe
 from dotenv import load_dotenv
 import os
 load_dotenv()
+
+# IMPORT STRIPE SDK
+import stripe
 STRIPE_TOKEN = os.environ.get("STRIPE_TOKEN")
 stripe.api_key = STRIPE_TOKEN
 
-from flask import Flask, redirect, request
-app = Flask(__name__)
+# IMPORT MERCADO PAGO SDK
+import mercadopago
+ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
+sdk = mercadopago.SDK(ACCESS_TOKEN)
 
-YOUR_DOMAIN = 'http://localhost:4242'
+# SERVER ROUTES
+from flask import Flask, redirect, request, jsonify
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
+
+YOUR_DOMAIN = 'http://localhost:5000'
+
+@app.route('/pix-payment', methods=['POST'])
+def pixPayment():
+    data = request.get_json()
+    print("Received data:", data)
+
+    email = data.get('email')
+    cpf = data.get('cpf')
+    print("Email and CPF received: ", email, cpf)
+
+    payment_data = {
+        "transaction_amount": 30,
+        "description": "description",
+        "payment_method_id": "pix",
+        "payer": {
+            "email": email,
+            "first_name": "Test First Name",
+            "last_name": "Test Last Name",
+            "identification": {
+                "type": "CPF",
+                "number": cpf
+            }
+        }
+    }
+    payment_response = sdk.payment().create(payment_data)
+    # print("Payment response:", payment_response)
+    ticketUrl = payment_response['response']['point_of_interaction']['transaction_data']['ticket_url']
+    print(ticketUrl)
 
 # Create a checkout session
 @app.route('/create-checkout-session', methods=['POST'])
@@ -35,4 +73,4 @@ def create_checkout_session():
     return redirect(checkout_session.url, code=303)
 
 if __name__ == '__main__':
-    app.run(port=4242)
+    app.run(port=5000)

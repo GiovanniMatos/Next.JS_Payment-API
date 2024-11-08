@@ -14,19 +14,18 @@ export default function CheckoutPix(){
     const response = await fetch("http://localhost:4000/pix-payment", {
             method: "POST",
             headers: {
-                mode: "no-cors",
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 transaction_amount: Number(transaction_amount),
-                description: description,
+                description: description || "",
                 email: email,
                 cpf: cpf
             })
           })
           const data = await response.json();
           window.location.href = data.ticket_url;
-}
+  }
   return(
       <>
       <h1 className="mb-1 text-left ml-[-1.5rem] lg:ml-[0.20rem]">Pix Payment</h1>

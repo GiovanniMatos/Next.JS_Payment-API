@@ -1,2 +1,4 @@
 stripe
+Flask
+flask-cors
 python-dotenv

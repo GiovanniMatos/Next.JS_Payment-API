@@ -15,9 +15,7 @@ const { MercadoPagoConfig, Payment } = require('mercadopago'); // correct Mercad
 const stripe = require('stripe')(STRIPE_TOKEN); // correct Stripe SDK import
 
 // MERCADO PAGO Pix Payment Creation based on documentation
-const client = new MercadoPagoConfig({ 
-    accessToken: ACCESS_TOKEN, 
-    options: { timeout: 5000, idempotencyKey: 'abc' } });
+const client = new MercadoPagoConfig({ accessToken: ACCESS_TOKEN});
 const payment = new Payment(client); //payment with your account
 
 app.post('/pix-payment', async (req, res) => {
