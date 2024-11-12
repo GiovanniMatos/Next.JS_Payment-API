@@ -47,6 +47,7 @@ def pixPayment():
     # print("Payment response:", payment_response)
     ticketUrl = payment_response['response']['point_of_interaction']['transaction_data']['ticket_url']
     print(ticketUrl)
+    return jsonify({'ticket_url': ticketUrl})
 
 # Create a checkout session
 @app.route('/create-checkout-session', methods=['POST'])

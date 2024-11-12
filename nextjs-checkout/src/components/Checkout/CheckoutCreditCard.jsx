@@ -26,7 +26,7 @@ export default function CheckoutCreditCard(){
     async function payWithCard(event){
         event.preventDefault(); 
         try {
-            const response = await fetch("http://localhost:4000/create-payment-intent", {
+            const response = await fetch("https://testeuser111.pythonanywhere.com/create-payment-intent", {
                 method: "POST",
                 headers: {
                     mode: "no-cors",

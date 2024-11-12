@@ -11,7 +11,7 @@ export default function CheckoutPix(){
 
   async function payWithPix(event){
     event.preventDefault(); 
-    const response = await fetch("http://localhost:4000/pix-payment", {
+    const response = await fetch("https://testeuser111.pythonanywhere.com/pix-payment", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -22,7 +22,7 @@ export default function FormPayer(){
         event.preventDefault();
         
         try {
-            await fetch("http://localhost:4000/create-costumer", {
+            await fetch("https://testeuser111.pythonanywhere.com/create-costumer", {
                 method: 'POST',
                 headers: {
                     mode: "no-cors",
