@@ -21,7 +21,7 @@ const payment = new Payment(client); //payment with your account
 app.post('/pix-payment', async (req, res) => {
 
     const body =  { 
-        transaction_amount: req.body.transaction_amount,
+        transaction_amount: 30,
         description: req.body.description,
         payment_method_id: "pix",
             payer: {
